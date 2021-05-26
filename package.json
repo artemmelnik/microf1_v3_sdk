@@ -1,6 +1,6 @@
 {
   "name": "@artemmelnik/microf1_v3_sdk",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "repository": "artemmelnik/microf1_v3_sdk",
   "main": "index.js"
 }

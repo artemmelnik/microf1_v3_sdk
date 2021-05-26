@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+class ManagerSDK {
+    constructor(token, baseUrl, unitId) {}
+}
+
 class BorrowerSDK {
     constructor(token, baseUrl, unitId) {
         axios.defaults.headers.common.Accept = 'application/json';
@@ -21,6 +25,10 @@ class BorrowerSDK {
         return this.axios;
     }
 
+    getBorrowerCreditCards() {
+        return this.getAxios().post('borrower-credit-card/list');
+    }
+
     getDeposit(params) {
         return this.getAxios().post('/deposit/borrower/deposit/get', params);
     }
@@ -38,4 +46,7 @@ class BorrowerSDK {
     }
 }
 
-export {BorrowerSDK};
+export {
+    BorrowerSDK,
+    ManagerSDK,
+};
