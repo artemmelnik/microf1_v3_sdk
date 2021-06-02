@@ -1,5 +1,16 @@
 import axios from 'axios';
 
+const DepositApplicationStatus = {
+    STATUS_NEW: 1,
+    STATUS_WAITING_BORROWER_ASSIGN: 2,
+    STATUS_WAITING_DECISION: 3,
+    STATUS_APPROVED: 4,
+    STATUS_CANCELED: 5,
+    STATUS_SENT_FOR_REVISION: 6,
+    STATUS_WAITING_MONEY_TRANSFER: 7,
+    STATUS_DONE: 8,
+};
+
 const ResponseHandler = {
     dispatch(response) {
         if (response[0].code === 0) {
@@ -71,8 +82,22 @@ class BorrowerSDK {
         return this.getAxios().post('/deposit/borrower/deposit-product/list');
     }
 
+    assignDepositApplication(params) {
+        return this.getAxios().post('/deposit/borrower/deposit-application/assign', params);
+    }
+
+    refillDepositApplication(params) {
+        return this.getAxios().post('/deposit/borrower/deposit-application/refill', params);
+    }
+
     getDeposit(params) {
         return this.getAxios().post('/deposit/borrower/deposit/get', params);
+    }
+
+    getDeposits(params) {
+        params = params || {};
+
+        return this.getAxios().post('/deposit/borrower/deposit/list', params);
     }
 
     refillDeposit(params) {
@@ -92,4 +117,5 @@ export {
     BorrowerSDK,
     ManagerSDK,
     ResponseHandler,
+    DepositApplicationStatus,
 };
