@@ -74,6 +74,10 @@ class BorrowerSDK {
         return this.axios;
     }
 
+    getBorrowerContacts() {
+        return this.getAxios().post('borrower-contact/list');
+    }
+
     getBorrowerCreditCards() {
         return this.getAxios().post('borrower-credit-card/list');
     }
@@ -104,12 +108,18 @@ class BorrowerSDK {
         return this.getAxios().post('/deposit/borrower/deposit/refill-deposit', params);
     }
 
-    getDepositPayoutSchedules() {
-        return this.getAxios().post('/deposit/borrower/deposit-payout-schedule/list');
+    getDepositPayoutSchedules(params) {
+        params = params || {};
+
+        return this.getAxios().post('/deposit/borrower/deposit-payout-schedule/list', params);
     }
 
     addDepositPayoutSchedules(params) {
         return this.getAxios().post('/deposit/borrower/deposit-payout-schedule/add', params);
+    }
+
+    addDepositApplication(params) {
+        return this.getAxios().post('/deposit/borrower/deposit-application/add', params);
     }
 }
 
