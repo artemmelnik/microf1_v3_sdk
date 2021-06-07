@@ -11,6 +11,12 @@ const DepositApplicationStatus = {
     STATUS_DONE: 8,
 };
 
+const DepositPayoutScheduleStatus = {
+    STATUS_NOT_PAID: 0,
+    STATUS_PAID_OUT: 1,
+    STATUS_PAYMENT_ERROR: 2,
+};
+
 const ResponseHandler = {
     dispatch(response) {
         if (response[0].code === 0) {
