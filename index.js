@@ -80,12 +80,32 @@ class BorrowerSDK {
         return this.axios;
     }
 
+    getCreditProducts() {
+        return this.getAxios().post('credit-product/list');
+    }
+
     getBorrowerContacts() {
         return this.getAxios().post('borrower-contact/list');
     }
 
     getBorrowerCreditCards() {
         return this.getAxios().post('borrower-credit-card/list');
+    }
+
+    getVerifiedBorrowerCreditCards() {
+        return this.getAxios().post('borrower-credit-card/list', {
+            alias: 'bcc',
+            filters: {
+                function: 'and',
+                where: [
+                    {
+                        operator: '!=',
+                        key: 'bcc.verified_by',
+                        value: null,
+                    },
+                ],
+            },
+        });
     }
 
     getDepositProducts() {
