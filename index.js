@@ -80,8 +80,42 @@ class BorrowerSDK {
         return this.axios;
     }
 
+    getBorrower(params) {
+        return this.getAxios().post('borrower/get', params);
+    }
+
+    getBorrowerFileEncoded(params) {
+        return this.getAxios().post('borrower/get-file-encoded', params);
+    }
+
+    paymentFeeForCreditUnion(params) {
+        params = params || {};
+
+        return this.getAxios().post('borrower/payment-fee-for-credit-union', params);
+    }
+
+    updateProfile(params) {
+        return this.getAxios().post('borrower/update-profile', params);
+    }
+
+    setFile(params) {
+        return this.getAxios().post('borrower/set-file', params);
+    }
+
+    updateBorrowerProfile(params) {
+        return this.getAxios().post('borrower-profile/update', params);
+    }
+
+    checkFieldsInBorrowerProfile(params) {
+        return this.getAxios().post('borrower-profile/check-fields', params);
+    }
+
     getCreditProducts() {
         return this.getAxios().post('credit-product/list');
+    }
+
+    getBorrowerForm() {
+        return this.getAxios().post('borrower-form/get');
     }
 
     getBorrowerContacts() {
@@ -110,6 +144,16 @@ class BorrowerSDK {
 
     getDepositProducts() {
         return this.getAxios().post('/deposit/borrower/deposit-product/list');
+    }
+
+    getDepositApplications(params) {
+        params = params || {};
+
+        return this.getAxios().post('/deposit/borrower/deposit-application/list', params);
+    }
+
+    getDepositApplication(params) {
+        return this.getAxios().post('/deposit/borrower/deposit-application/get', params);
     }
 
     assignDepositApplication(params) {
