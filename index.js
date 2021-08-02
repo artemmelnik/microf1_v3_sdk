@@ -98,6 +98,10 @@ class BorrowerSDK {
         return this.getAxios().post('borrower/update-profile', params);
     }
 
+    updateBorrower(params) {
+        return this.getAxios().post('borrower/update', params);
+    }
+
     setFile(params) {
         return this.getAxios().post('borrower/set-file', params);
     }
