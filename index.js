@@ -11,6 +11,17 @@ const DepositApplicationStatus = {
     STATUS_DONE: 8,
 };
 
+const LoanStatus = {
+    STATUS_NEW: 1,
+    STATUS_WAITING_BORROWER_ASSIGN: 2,
+    STATUS_WAITING_DECISION: 3,
+    STATUS_APPROVED: 4,
+    STATUS_CANCELED: 5,
+    STATUS_SENT_FOR_REVISION: 6,
+    STATUS_WAITING_MONEY_TRANSFER: 7,
+    STATUS_DONE: 8,
+};
+
 const DepositPayoutScheduleStatus = {
     STATUS_NOT_PAID: 0,
     STATUS_PAID_OUT: 1,
@@ -195,6 +206,18 @@ class BorrowerSDK {
     addDepositApplication(params) {
         return this.getAxios().post('/deposit/borrower/deposit-application/add', params);
     }
+
+    preCalculateCredit(params) {
+        return this.getAxios().post('credit-pre-calculator/get', params);
+    }
+
+    addLoan(params) {
+        return this.getAxios().post('loan/add', params);
+    }
+
+    getLoan(params) {
+        return this.getAxios().post('loan/get', params);
+    }
 }
 
 export {
@@ -202,4 +225,5 @@ export {
     ManagerSDK,
     ResponseHandler,
     DepositApplicationStatus,
+    LoanStatus,
 };
